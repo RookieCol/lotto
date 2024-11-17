@@ -12,7 +12,7 @@ export default function Navbar() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-2"
+      className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-2"
     >
       <Link href={"/"}>
         <Image src="/images/logo.png" alt="logo" width={60} height={100} />

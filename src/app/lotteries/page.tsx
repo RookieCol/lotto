@@ -10,7 +10,7 @@ export default function Page() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-svh w-full"
+      className="min-h-svh w-full "
     >
       <h1 className="text-[3.5em] text-center font-pp font-semibold pt-[80px]">
         Lotteries

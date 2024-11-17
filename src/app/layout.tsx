@@ -22,11 +22,11 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Onchain App Template",
-  description: "Built with OnchainKit",
+  title: "Lotto",
+  description: "PGF Lotto",
   openGraph: {
-    title: "Onchain App Template",
-    description: "Built with OnchainKit",
+    title: "Lotto",
+    description: "PGF Lotto",
     images: [`${NEXT_PUBLIC_URL}/vibes/vibes-19.png`],
   },
 };
@@ -44,7 +44,7 @@ export default function RootLayout({
             className="pattern-cross pattern-orange-500 pattern-bg-black absolute inset-0
   pattern-size-4 pattern-opacity-20 -z-10"
           ></div>
-          {children}
+          <div className="w-full max-w-[400px] mx-auto">{children}</div>
           <ToastContainer />
         </OnchainProviders>
       </body>

@@ -70,6 +70,12 @@ a {
   position: relative;
 }
 
+@media screen and (min-width: 400px) {
+  .looping-words {
+    font-size: 10em;
+  }
+}
+
 .looping-words__list {
   text-align: center;
   text-transform: uppercase;
