@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function TicketCard() {
+export default function TicketCard({ ticket }: { ticket: any }) {
   return (
     <div className="w-full flex flex-col">
       <Image

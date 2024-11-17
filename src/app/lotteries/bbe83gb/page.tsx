@@ -26,6 +26,7 @@ export default function Page() {
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
   const [minutesLeft, setMinutesLeft] = useState<number | null>(null);
   const [lotteryEnded, setLotteryEnded] = useState<boolean>(false);
+  const [userTickets, setUserTickets] = useState<any[]>([]);
   const [initLoading, setInitLoading] = useState<boolean>(false);
   const [buyTicketLoading, setBuyTicketLoading] = useState<boolean>(false);
   const config = useConfig();
@@ -33,6 +34,7 @@ export default function Page() {
 
   useEffect(() => {
     initial();
+    fetchUserTickets();
   }, []);
 
   const initial = async () => {
@@ -77,6 +79,42 @@ export default function Page() {
     }
   };
 
+  const fetchUserTickets = async () => {
+    if (!address) return;
+    const endpoint =
+      "https://api.studio.thegraph.com/query/77216/lot/version/latest";
+
+    const query = `
+      query purchasedTickets {
+        ticketPurchaseds {
+          id
+          gameId
+        }
+      }
+    `;
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      setUserTickets(data.data.ticketPurchaseds);
+    } catch (error) {
+      console.error("Error fetching purchased tickets:", error);
+      return [];
+    }
+  };
+
   const handleBuyTicket = async () => {
     setBuyTicketLoading(true);
     if (!address) {
@@ -112,7 +150,7 @@ export default function Page() {
       </h1>
       {initLoading ? (
         <p className="opacity-80 text-center">Loading...</p>
-      ) : lotteryEnded ? (
+      ) : !lotteryEnded ? (
         <p className="opacity-80 text-center">Lottery has ended</p>
       ) : (
         <div className="w-full grid grid-cols-2 px-4 ">
@@ -121,7 +159,7 @@ export default function Page() {
             <span className="text-white">{selectedNumbers.length}/5</span>
           </p>
           <p className="text-center  opacity-90 text-primary font-bold">
-            Time left: <span className="text-white">{minutesLeft} min</span>
+            Time left: <span className="text-white">5 min</span>
           </p>
         </div>
       )}
@@ -129,7 +167,7 @@ export default function Page() {
         <div
           className={cn(
             "w-full grid grid-cols-4 grid-rows-3 gap-4 p-4 rounded-xl relative",
-            initLoading || lotteryEnded ? "pointer-events-none" : ""
+            initLoading || !lotteryEnded ? "pointer-events-none" : ""
           )}
         >
           {NUMBERS.map((number, index) => (
@@ -236,7 +274,9 @@ export default function Page() {
           <p className="font-pp text-3xl tracking-wide my-5">Your tickets:</p>
 
           <div className="grid grid-cols-2 gap-3">
-            <TicketCard />
+            {userTickets?.map((ticket: any, index: number) => (
+              <TicketCard key={index} ticket={ticket} />
+            ))}
           </div>
 
           {selectedNumbers.length === 5 && (
