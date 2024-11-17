@@ -7,7 +7,13 @@ import {
 } from "@rainbow-me/rainbowkit/wallets";
 import { useMemo } from "react";
 import { http, createConfig } from "wagmi";
-import { baseSepolia, celoAlfajores } from "wagmi/chains";
+import {
+  baseSepolia,
+  celoAlfajores,
+  polygonAmoy,
+  polygonMumbai,
+  sepolia,
+} from "wagmi/chains";
 import { NEXT_PUBLIC_WC_PROJECT_ID } from "./config";
 
 export function useWagmiConfig() {
@@ -37,13 +43,14 @@ export function useWagmiConfig() {
     );
 
     const wagmiConfig = createConfig({
-      chains: [baseSepolia, celoAlfajores],
+      chains: [baseSepolia, sepolia, polygonAmoy],
       multiInjectedProviderDiscovery: false,
       connectors,
       ssr: true,
       transports: {
         [baseSepolia.id]: http(),
-        [celoAlfajores.id]: http(),
+        [sepolia.id]: http(),
+        [polygonAmoy.id]: http(),
       },
     });
 

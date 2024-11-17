@@ -1,11 +1,11 @@
-'use client';
-import WalletWrapper from './WalletWrapper';
+"use client";
+import WalletWrapper from "./WalletWrapper";
 
 export default function SignupButton() {
   return (
     <WalletWrapper
-      className="ockConnectWallet_Container min-w-[90px] shrink bg-slate-200 text-[#030712] hover:bg-slate-300"
-      text="Sign up"
+      className="ockConnectWallet_Container min-w-[90px] shrink relative inline-block text-lg border-2 border-black bg-white py-2 px-3 group button"
+      text="Sign Up"
     />
   );
 }

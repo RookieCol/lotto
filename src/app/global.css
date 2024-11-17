@@ -4,7 +4,9 @@
 @tailwind utilities;
 
 :root {
-  /* Palette */
+  --black: #0c0c0c;
+  --white: #efeeec;
+  --color-primary: #ff4c24;
   --palette-bg-black: #fff;
   --palette-bg-white: rgb(21, 26, 38);
 
@@ -36,50 +38,193 @@ html .font-inter {
 body {
   height: 100%;
   margin: 0;
-  background-color: var(--palette-bg-black);
-  color: var(--palette-bg-white);
+  background-color: var(--black);
+  color: var(--white);
   font-family: Inter, sans-serif;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
-a {
-  text-decoration: underline;
-}
-
-svg {
-  display: block;
-  overflow: visible;
-  vertical-align: middle;
-}
-
 ul {
   padding-inline-start: 0;
-}
-
-/* stylelint-disable-next-line */
-#__next {
-  position: relative;
-  z-index: 0;
-}
-
-.ockConnectWallet_Container span {
-  color: #030712;
-}
-
-/* i believe this is necessary because 
-of a div added by rainbowkit provider */
-body > div {
-  height: 100%;
-  max-width: 100vw;
-  box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
 }
 
-.templateSection > div {
-  max-width: 100%;;
+.cloneable {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.looping-words {
+  height: 2.7em;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+  font-size: 35vw;
+  line-height: 0.9;
+  position: relative;
+}
+
+.looping-words__list {
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-flow: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family:
+    PP Neue Corp,
+    sans-serif;
+  font-weight: 700;
+  list-style: none;
+  display: flex;
+  position: relative;
+}
+
+.looping-words__list.is--primary {
+  color: var(--color-primary);
+}
+
+.looping-words__list.is--gray {
+  color: var(--color-neutral-500);
+}
+
+.looping-words__fade {
+  background-image: linear-gradient(
+    180deg,
+    #0c0c0c 5%,
+    transparent 40%,
+    transparent 60%,
+    #0c0c0c 95%
+  );
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.looping-words__fade.is--radial {
+  background-image: radial-gradient(
+    circle closest-side at 50% 50%,
+    transparent 64%,
+    #2c2c2c 93%
+  );
+  width: 140%;
+  display: block;
+  left: -20%;
+}
+
+.looping-words__selector,
+.selector {
+  pointer-events: none;
+  width: 100%;
+  height: 0.9em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selector {
+  height: 100%;
+}
+
+.looping-words__edge,
+.edge {
+  border-top: 0.035em solid var(--color-primary);
+  border-left: 0.035em solid var(--color-primary);
+  width: 0.125em;
+  height: 0.125em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.edge {
+  border-top: 0.25em solid var(--color-primary);
+  border-left: 0.25em solid var(--color-primary);
+  width: 1em;
+  height: 1em;
+}
+
+.looping-words__edge.is--2,
+.edge.is--2 {
+  left: auto;
+  right: 0;
+  transform: rotate(90deg);
+}
+
+.looping-words__edge.is--3,
+.edge.is--3 {
+  inset: auto 0 0 auto;
+  transform: rotate(180deg);
+}
+
+.looping-words__edge.is--4,
+.edge.is--4 {
+  top: auto;
+  bottom: 0;
+  transform: rotate(270deg);
+}
+
+.looping-words__containers {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.looping-words__p {
+  margin: 0;
+}
+
+.accent {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+@font-face {
+  font-family: "PP Neue Corp";
+  src: url("https://cdn.prod.website-files.com/6717aac16c9ea22eeef1e79e/6717de2d56e40b921572d2d9_PPNeueCorp-TightUltrabold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.select button span {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.select div label.select-none {
+  color: var(--white) !important;
+}
+
+.button {
+  box-shadow: 4px 4px 0px var(--color-primary);
+}
+
+.text-ock-inverse {
+  color: var(--black) !important;
+}
+
+body ::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;
+}
+html {
+  scrollbar-width: none;
 }

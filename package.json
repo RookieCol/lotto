@@ -18,14 +18,22 @@
   },
   "dependencies": {
     "@coinbase/onchainkit": "^0.33.6",
+    "@material-tailwind/react": "^2.1.10",
+    "framer-motion": "^11.11.17",
+    "gsap": "^3.12.5",
+    "lucide-react": "^0.460.0",
     "next": "^14.2.5",
     "permissionless": "^0.1.26",
     "react": "^18",
     "react-dom": "^18",
-    "siwe": "^2.3.2"
+    "react-toastify": "^10.0.6",
+    "siwe": "^2.3.2",
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.0",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^14.2.0",
     "@types/node": "^20.11.8",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.7",
@@ -35,16 +43,16 @@
     "autoprefixer": "^10.4.19",
     "bufferutil": "^4.0.7",
     "encoding": "^0.1.13",
-    "lokijs": "^1.5.12",
     "jsdom": "^24.1.0",
+    "lokijs": "^1.5.12",
     "pino-pretty": "^10.2.0",
     "postcss": "^8.4.38",
     "supports-color": "^9.4.0",
     "tailwindcss": "^3.4.0",
-    "@testing-library/jest-dom": "^6.4.6",
-    "@testing-library/react": "^14.2.0",
+    "tailwindcss-bg-patterns": "^0.3.0",
     "typescript": "^5.3.3",
     "utf-8-validate": "^6.0.3",
     "vitest": "^2.0.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
