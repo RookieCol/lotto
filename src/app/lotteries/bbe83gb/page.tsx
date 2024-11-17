@@ -112,7 +112,7 @@ export default function Page() {
       </h1>
       {initLoading ? (
         <p className="opacity-80 text-center">Loading...</p>
-      ) : !lotteryEnded ? (
+      ) : lotteryEnded ? (
         <p className="opacity-80 text-center">Lottery has ended</p>
       ) : (
         <div className="w-full grid grid-cols-2 px-4 ">
@@ -129,7 +129,7 @@ export default function Page() {
         <div
           className={cn(
             "w-full grid grid-cols-4 grid-rows-3 gap-4 p-4 rounded-xl relative",
-            initLoading || !lotteryEnded ? "pointer-events-none" : ""
+            initLoading || lotteryEnded ? "pointer-events-none" : ""
           )}
         >
           {NUMBERS.map((number, index) => (
